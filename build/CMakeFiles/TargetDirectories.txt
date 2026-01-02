@@ -1,0 +1,3 @@
+C:/msys64/Subraj/CPP-mini-Browser/build/CMakeFiles/browser.dir
+C:/msys64/Subraj/CPP-mini-Browser/build/CMakeFiles/edit_cache.dir
+C:/msys64/Subraj/CPP-mini-Browser/build/CMakeFiles/rebuild_cache.dir
