@@ -13,6 +13,7 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 add_executable(browser
     src/main.cpp
     src/file_loader/FileLoader.cpp
+    src/tokenizer/Tokenizer.cpp
 )
 
 # 3. Tell CMake where your header (.hpp) files are located

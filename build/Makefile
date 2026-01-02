@@ -176,6 +176,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/tokenizer/Tokenizer.obj: src/tokenizer/Tokenizer.cpp.obj
+.PHONY : src/tokenizer/Tokenizer.obj
+
+# target to build an object file
+src/tokenizer/Tokenizer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj
+.PHONY : src/tokenizer/Tokenizer.cpp.obj
+
+src/tokenizer/Tokenizer.i: src/tokenizer/Tokenizer.cpp.i
+.PHONY : src/tokenizer/Tokenizer.i
+
+# target to preprocess a source file
+src/tokenizer/Tokenizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.i
+.PHONY : src/tokenizer/Tokenizer.cpp.i
+
+src/tokenizer/Tokenizer.s: src/tokenizer/Tokenizer.cpp.s
+.PHONY : src/tokenizer/Tokenizer.s
+
+# target to generate assembly for a file
+src/tokenizer/Tokenizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.s
+.PHONY : src/tokenizer/Tokenizer.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/tokenizer/Tokenizer.obj
+	@echo ... src/tokenizer/Tokenizer.i
+	@echo ... src/tokenizer/Tokenizer.s
 .PHONY : help
 
 

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/browser.dir/src/file_loader/FileLoader.cpp.obj.d"
   "CMakeFiles/browser.dir/src/main.cpp.obj"
   "CMakeFiles/browser.dir/src/main.cpp.obj.d"
+  "CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj"
+  "CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj.d"
   "browser.exe"
   "browser.exe.manifest"
   "browser.pdb"
