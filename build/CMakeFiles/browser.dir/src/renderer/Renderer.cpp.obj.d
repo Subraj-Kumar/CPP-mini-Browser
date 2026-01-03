@@ -256,4 +256,8 @@ CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
  C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
- C:/msys64/Subraj/CPP-mini-Browser/include/dom/Node.hpp
+ C:/msys64/Subraj/CPP-mini-Browser/include/dom/Node.hpp \
+ C:/msys64/ucrt64/include/c++/14.2.0/sstream \
+ C:/msys64/ucrt64/include/c++/14.2.0/istream \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc
