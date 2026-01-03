@@ -1,5 +1,6 @@
-CMakeFiles/browser.dir/src/main.cpp.obj: \
- C:\msys64\Subraj\CPP-mini-Browser\src\main.cpp \
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: \
+ C:\msys64\Subraj\CPP-mini-Browser\src\renderer\Renderer.cpp \
+ C:/msys64/Subraj/CPP-mini-Browser/include/renderer/Renderer.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics.hpp \
  C:/msys64/ucrt64/include/SFML/Window.hpp \
  C:/msys64/ucrt64/include/SFML/System.hpp \
@@ -242,9 +243,6 @@ CMakeFiles/browser.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/SFML/Graphics/Sprite.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/Text.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/VertexBuffer.hpp \
- C:/msys64/ucrt64/include/c++/14.2.0/iostream \
- C:/msys64/ucrt64/include/c++/14.2.0/istream \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/memory \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
@@ -258,9 +256,4 @@ CMakeFiles/browser.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
  C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
- C:/msys64/Subraj/CPP-mini-Browser/include/file_loader/FileLoader.hpp \
- C:/msys64/Subraj/CPP-mini-Browser/include/tokenizer/Tokenizer.hpp \
- C:/msys64/Subraj/CPP-mini-Browser/include/tokenizer/Token.hpp \
- C:/msys64/Subraj/CPP-mini-Browser/include/dom/DOMBuilder.hpp \
- C:/msys64/Subraj/CPP-mini-Browser/include/dom/Node.hpp \
- C:/msys64/Subraj/CPP-mini-Browser/include/renderer/Renderer.hpp
+ C:/msys64/Subraj/CPP-mini-Browser/include/dom/Node.hpp

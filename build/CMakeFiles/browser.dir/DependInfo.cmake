@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/msys64/Subraj/CPP-mini-Browser/src/dom/DOMBuilder.cpp" "CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj" "gcc" "CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj.d"
   "C:/msys64/Subraj/CPP-mini-Browser/src/file_loader/FileLoader.cpp" "CMakeFiles/browser.dir/src/file_loader/FileLoader.cpp.obj" "gcc" "CMakeFiles/browser.dir/src/file_loader/FileLoader.cpp.obj.d"
   "C:/msys64/Subraj/CPP-mini-Browser/src/main.cpp" "CMakeFiles/browser.dir/src/main.cpp.obj" "gcc" "CMakeFiles/browser.dir/src/main.cpp.obj.d"
+  "C:/msys64/Subraj/CPP-mini-Browser/src/renderer/Renderer.cpp" "CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj" "gcc" "CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj.d"
   "C:/msys64/Subraj/CPP-mini-Browser/src/tokenizer/Tokenizer.cpp" "CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj" "gcc" "CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj.d"
   )
 

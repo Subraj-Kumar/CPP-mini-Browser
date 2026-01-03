@@ -1,60 +1,45 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <vector>
 #include <memory>
 
 // Include our modular headers
 #include "file_loader/FileLoader.hpp"
 #include "tokenizer/Tokenizer.hpp"
 #include "dom/DOMBuilder.hpp"
-#include "dom/Node.hpp"
-
-// Recursive function to print the DOM Tree to the terminal with indentation
-void printDOM(const std::shared_ptr<Node>& node, int depth = 0) {
-    // Create indentation based on depth
-    for (int i = 0; i < depth; ++i)
-        std::cout << "  ";
-
-    if (node->type == NodeType::Element) {
-        std::cout << "<" << node->value << ">" << std::endl;
-    } else {
-        std::cout << "\"" << node->value << "\"" << std::endl;
-    }
-
-    // Recursively print all children
-    for (const auto& child : node->children) {
-        printDOM(child, depth + 1);
-    }
-}
+#include "renderer/Renderer.hpp"
 
 int main() {
-    // 1. Load the HTML file
+    // 1. Setup SFML Window
+    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Day 5");
+    window.setFramerateLimit(60);
+
+    // 2. Load Font (Make sure the path and filename match your assets folder!)
+    sf::Font font;
+    // Note: If you renamed your font to font.ttf, use that here.
+    if (!font.loadFromFile("assets/fonts/font.ttf")) {
+        std::cerr << "[ERROR] Could not load font from assets/fonts/Roboto-Regular.ttf" << std::endl;
+        return -1;
+    }
+
+    // 3. The Browser Pipeline
     std::string htmlContent;
     try {
+        // Load the initial page
         htmlContent = FileLoader::loadFile("assets/sample_pages/index.html");
-        std::cout << "[SUCCESS] File loaded." << std::endl;
+        std::cout << "[SUCCESS] HTML Loaded." << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "[ERROR] " << e.what() << std::endl;
         return -1;
     }
 
-    // 2. Tokenize the HTML string
+    // Convert string -> tokens -> DOM tree
     auto tokens = Tokenizer::tokenize(htmlContent);
-    std::cout << "[SUCCESS] Tokens generated." << std::endl;
-
-    // 3. Build the DOM Tree from the tokens
     auto domTree = DOMBuilder::build(tokens);
-    std::cout << "[SUCCESS] DOM Tree built." << std::endl;
+    
+    // 4. Initialize the Renderer
+    Renderer renderer(font);
 
-    // 4. Visualize the Tree in the terminal
-    std::cout << "\n--- DOM Tree Structure ---" << std::endl;
-    printDOM(domTree);
-    std::cout << "--------------------------\n" << std::endl;
-
-    // 5. Setup SFML Window
-    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Day 4");
-    window.setFramerateLimit(60);
-
+    // 5. Main Event Loop
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -62,7 +47,12 @@ int main() {
                 window.close();
         }
 
-        window.clear(sf::Color::White);
+        // --- Rendering Phase ---
+        window.clear(sf::Color::White); // Standard browser background
+
+        // Draw the DOM tree to the window
+        renderer.render(window, domTree);
+
         window.display();
     }
 

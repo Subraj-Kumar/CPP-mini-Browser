@@ -200,6 +200,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/renderer/Renderer.obj: src/renderer/Renderer.cpp.obj
+.PHONY : src/renderer/Renderer.obj
+
+# target to build an object file
+src/renderer/Renderer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj
+.PHONY : src/renderer/Renderer.cpp.obj
+
+src/renderer/Renderer.i: src/renderer/Renderer.cpp.i
+.PHONY : src/renderer/Renderer.i
+
+# target to preprocess a source file
+src/renderer/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/renderer/Renderer.cpp.i
+.PHONY : src/renderer/Renderer.cpp.i
+
+src/renderer/Renderer.s: src/renderer/Renderer.cpp.s
+.PHONY : src/renderer/Renderer.s
+
+# target to generate assembly for a file
+src/renderer/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/renderer/Renderer.cpp.s
+.PHONY : src/renderer/Renderer.cpp.s
+
 src/tokenizer/Tokenizer.obj: src/tokenizer/Tokenizer.cpp.obj
 .PHONY : src/tokenizer/Tokenizer.obj
 
@@ -242,6 +266,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/renderer/Renderer.obj
+	@echo ... src/renderer/Renderer.i
+	@echo ... src/renderer/Renderer.s
 	@echo ... src/tokenizer/Tokenizer.obj
 	@echo ... src/tokenizer/Tokenizer.i
 	@echo ... src/tokenizer/Tokenizer.s

@@ -131,12 +131,28 @@ CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\msys64\Subraj\CPP-mini-Browser\src\dom\DOMBuilder.cpp -o CMakeFiles\browser.dir\src\dom\DOMBuilder.cpp.s
 
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/browser.dir/flags.make
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/browser.dir/includes_CXX.rsp
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: C:/msys64/Subraj/CPP-mini-Browser/src/renderer/Renderer.cpp
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/browser.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\msys64\Subraj\CPP-mini-Browser\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj -MF CMakeFiles\browser.dir\src\renderer\Renderer.cpp.obj.d -o CMakeFiles\browser.dir\src\renderer\Renderer.cpp.obj -c C:\msys64\Subraj\CPP-mini-Browser\src\renderer\Renderer.cpp
+
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/browser.dir/src/renderer/Renderer.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\msys64\Subraj\CPP-mini-Browser\src\renderer\Renderer.cpp > CMakeFiles\browser.dir\src\renderer\Renderer.cpp.i
+
+CMakeFiles/browser.dir/src/renderer/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/browser.dir/src/renderer/Renderer.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\msys64\Subraj\CPP-mini-Browser\src\renderer\Renderer.cpp -o CMakeFiles\browser.dir\src\renderer\Renderer.cpp.s
+
 # Object files for target browser
 browser_OBJECTS = \
 "CMakeFiles/browser.dir/src/main.cpp.obj" \
 "CMakeFiles/browser.dir/src/file_loader/FileLoader.cpp.obj" \
 "CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj" \
-"CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj"
+"CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj" \
+"CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj"
 
 # External object files for target browser
 browser_EXTERNAL_OBJECTS =
@@ -145,6 +161,7 @@ browser.exe: CMakeFiles/browser.dir/src/main.cpp.obj
 browser.exe: CMakeFiles/browser.dir/src/file_loader/FileLoader.cpp.obj
 browser.exe: CMakeFiles/browser.dir/src/tokenizer/Tokenizer.cpp.obj
 browser.exe: CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj
+browser.exe: CMakeFiles/browser.dir/src/renderer/Renderer.cpp.obj
 browser.exe: CMakeFiles/browser.dir/build.make
 browser.exe: C:/msys64/ucrt64/lib/libsfml-graphics.dll.a
 browser.exe: C:/msys64/ucrt64/lib/libsfml-window.dll.a
@@ -152,7 +169,7 @@ browser.exe: C:/msys64/ucrt64/lib/libsfml-system.dll.a
 browser.exe: CMakeFiles/browser.dir/linkLibs.rsp
 browser.exe: CMakeFiles/browser.dir/objects1.rsp
 browser.exe: CMakeFiles/browser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\msys64\Subraj\CPP-mini-Browser\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable browser.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\msys64\Subraj\CPP-mini-Browser\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable browser.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\browser.dir\link.txt --verbose=$(VERBOSE)
 	C:\msys64\ucrt64\bin\cmake.exe -E copy_directory C:/msys64/ucrt64/lib/cmake/SFML/../../../bin C:/msys64/Subraj/CPP-mini-Browser/build
 
