@@ -128,6 +128,30 @@ browser/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/build
 .PHONY : browser/fast
 
+src/dom/DOMBuilder.obj: src/dom/DOMBuilder.cpp.obj
+.PHONY : src/dom/DOMBuilder.obj
+
+# target to build an object file
+src/dom/DOMBuilder.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.obj
+.PHONY : src/dom/DOMBuilder.cpp.obj
+
+src/dom/DOMBuilder.i: src/dom/DOMBuilder.cpp.i
+.PHONY : src/dom/DOMBuilder.i
+
+# target to preprocess a source file
+src/dom/DOMBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.i
+.PHONY : src/dom/DOMBuilder.cpp.i
+
+src/dom/DOMBuilder.s: src/dom/DOMBuilder.cpp.s
+.PHONY : src/dom/DOMBuilder.s
+
+# target to generate assembly for a file
+src/dom/DOMBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\browser.dir\build.make CMakeFiles/browser.dir/src/dom/DOMBuilder.cpp.s
+.PHONY : src/dom/DOMBuilder.cpp.s
+
 src/file_loader/FileLoader.obj: src/file_loader/FileLoader.cpp.obj
 .PHONY : src/file_loader/FileLoader.obj
 
@@ -209,6 +233,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... browser
+	@echo ... src/dom/DOMBuilder.obj
+	@echo ... src/dom/DOMBuilder.i
+	@echo ... src/dom/DOMBuilder.s
 	@echo ... src/file_loader/FileLoader.obj
 	@echo ... src/file_loader/FileLoader.i
 	@echo ... src/file_loader/FileLoader.s

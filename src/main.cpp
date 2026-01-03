@@ -1,44 +1,58 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 // Include our modular headers
 #include "file_loader/FileLoader.hpp"
 #include "tokenizer/Tokenizer.hpp"
+#include "dom/DOMBuilder.hpp"
+#include "dom/Node.hpp"
+
+// Recursive function to print the DOM Tree to the terminal with indentation
+void printDOM(const std::shared_ptr<Node>& node, int depth = 0) {
+    // Create indentation based on depth
+    for (int i = 0; i < depth; ++i)
+        std::cout << "  ";
+
+    if (node->type == NodeType::Element) {
+        std::cout << "<" << node->value << ">" << std::endl;
+    } else {
+        std::cout << "\"" << node->value << "\"" << std::endl;
+    }
+
+    // Recursively print all children
+    for (const auto& child : node->children) {
+        printDOM(child, depth + 1);
+    }
+}
 
 int main() {
     // 1. Load the HTML file
     std::string htmlContent;
     try {
-        // Run from root folder so this path works!
         htmlContent = FileLoader::loadFile("assets/sample_pages/index.html");
-        std::cout << "[SUCCESS] HTML file loaded." << std::endl;
+        std::cout << "[SUCCESS] File loaded." << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "[ERROR] " << e.what() << std::endl;
-        return -1; // Exit if we can't load the file
+        return -1;
     }
 
-    // 2. Tokenize the HTML
-    // This turns a long string into a List of structured Tokens
-    std::vector<Token> tokens = Tokenizer::tokenize(htmlContent);
+    // 2. Tokenize the HTML string
+    auto tokens = Tokenizer::tokenize(htmlContent);
+    std::cout << "[SUCCESS] Tokens generated." << std::endl;
 
-    // 3. Print Tokens to Terminal (Verification Step)
-    std::cout << "\n--- Generated Tokens ---" << std::endl;
-    for (const auto& token : tokens) {
-        if (token.type == TokenType::TagOpen) {
-            std::cout << "TAG_OPEN : <" << token.value << ">" << std::endl;
-        } 
-        else if (token.type == TokenType::TagClose) {
-            std::cout << "TAG_CLOSE: </" << token.value << ">" << std::endl;
-        } 
-        else if (token.type == TokenType::Text) {
-            std::cout << "TEXT      : \"" << token.value << "\"" << std::endl;
-        }
-    }
-    std::cout << "------------------------\n" << std::endl;
+    // 3. Build the DOM Tree from the tokens
+    auto domTree = DOMBuilder::build(tokens);
+    std::cout << "[SUCCESS] DOM Tree built." << std::endl;
 
-    // 4. Setup SFML Window (Still blank for now, rendering comes in Day 5)
-    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Day 3");
+    // 4. Visualize the Tree in the terminal
+    std::cout << "\n--- DOM Tree Structure ---" << std::endl;
+    printDOM(domTree);
+    std::cout << "--------------------------\n" << std::endl;
+
+    // 5. Setup SFML Window
+    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Day 4");
     window.setFramerateLimit(60);
 
     while (window.isOpen()) {

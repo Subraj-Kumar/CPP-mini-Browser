@@ -14,6 +14,7 @@ add_executable(browser
     src/main.cpp
     src/file_loader/FileLoader.cpp
     src/tokenizer/Tokenizer.cpp
+    src/dom/DOMBuilder.cpp
 )
 
 # 3. Tell CMake where your header (.hpp) files are located
