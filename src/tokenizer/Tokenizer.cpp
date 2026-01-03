@@ -6,43 +6,42 @@ std::vector<Token> Tokenizer::tokenize(const std::string& html) {
     size_t i = 0;
 
     while (i < html.size()) {
-        // TAG
+        // --- TAG HANDLING ---
         if (html[i] == '<') {
             size_t closePos = html.find('>', i);
-            if (closePos == std::string::npos)
-                break;
+            if (closePos == std::string::npos) break;
 
-            std::string tag = html.substr(i + 1, closePos - i - 1);
+            // This grabs EVERYTHING inside the < >, including "a href='page2.html'"
+            std::string tagContent = html.substr(i + 1, closePos - i - 1);
 
-            if (!tag.empty() && tag[0] == '/') {
-                tokens.push_back({TokenType::TagClose, tag.substr(1)});
+            if (!tagContent.empty() && tagContent[0] == '/') {
+                tokens.push_back({TokenType::TagClose, tagContent.substr(1)});
             } else {
-                tokens.push_back({TokenType::TagOpen, tag});
+                // For Day 6, we pass the whole string "a href=..." as the value
+                tokens.push_back({TokenType::TagOpen, tagContent});
             }
 
             i = closePos + 1;
         }
-        // TEXT
+        // --- TEXT HANDLING ---
         else {
             size_t nextTag = html.find('<', i);
             std::string text = html.substr(i, nextTag - i);
 
-            // Trim whitespace-only text
-            bool hasText = false;
+            // Simple whitespace trim (Crucial for clean rendering)
+            bool hasActualText = false;
             for (char c : text) {
                 if (!std::isspace(c)) {
-                    hasText = true;
+                    hasActualText = true;
                     break;
                 }
             }
 
-            if (hasText) {
+            if (hasActualText) {
                 tokens.push_back({TokenType::Text, text});
             }
 
-            if (nextTag == std::string::npos)
-                break;
-
+            if (nextTag == std::string::npos) break;
             i = nextTag;
         }
     }

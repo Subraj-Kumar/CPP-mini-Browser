@@ -1,56 +1,89 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stack>
 #include <memory>
+#include <string>
 
-// Include our modular headers
+// Include our custom modules
 #include "file_loader/FileLoader.hpp"
 #include "tokenizer/Tokenizer.hpp"
 #include "dom/DOMBuilder.hpp"
 #include "renderer/Renderer.hpp"
 
 int main() {
-    // 1. Setup SFML Window
-    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Day 5");
+    // 1. Initialize the SFML Window
+    sf::RenderWindow window(sf::VideoMode(900, 600), "C++ Mini Browser - Final Version");
     window.setFramerateLimit(60);
 
-    // 2. Load Font (Make sure the path and filename match your assets folder!)
+    // 2. Load the Font
     sf::Font font;
-    // Note: If you renamed your font to font.ttf, use that here.
+    // Ensure this path matches your assets folder structure
     if (!font.loadFromFile("assets/fonts/font.ttf")) {
-        std::cerr << "[ERROR] Could not load font from assets/fonts/Roboto-Regular.ttf" << std::endl;
-        return -1;
+        std::cerr << "[ERROR] Could not load font. Ensure font is in assets/fonts/" << std::endl;
+        // Don't return -1 yet, try a fallback if needed, or just warn.
     }
 
-    // 3. The Browser Pipeline
-    std::string htmlContent;
-    try {
-        // Load the initial page
-        htmlContent = FileLoader::loadFile("assets/sample_pages/index.html");
-        std::cout << "[SUCCESS] HTML Loaded." << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "[ERROR] " << e.what() << std::endl;
-        return -1;
-    }
+    // 3. Browser State & Navigation History
+    std::stack<std::string> history;
+    std::string currentPage = "assets/sample_pages/index.html";
 
-    // Convert string -> tokens -> DOM tree
-    auto tokens = Tokenizer::tokenize(htmlContent);
-    auto domTree = DOMBuilder::build(tokens);
-    
-    // 4. Initialize the Renderer
+    // Lambda to handle the full pipeline of loading a new page
+    auto loadPage = [&](const std::string& path) {
+        try {
+            std::cout << "[NAVIGATING] Loading: " << path << std::endl;
+            std::string html = FileLoader::loadFile(path);
+            auto tokens = Tokenizer::tokenize(html);
+            return DOMBuilder::build(tokens);
+        } catch (const std::exception& e) {
+            std::cerr << "[BROWSER ERROR] " << e.what() << std::endl;
+            // Return an "Error Page" DOM node if the file isn't found
+            auto errorNode = std::make_shared<Node>(NodeType::Element, "body");
+            errorNode->children.push_back(std::make_shared<Node>(NodeType::Text, "404 - Page Not Found"));
+            return errorNode;
+        }
+    };
+
+    // Initial page load
+    auto domTree = loadPage(currentPage);
     Renderer renderer(font);
 
-    // 5. Main Event Loop
+    // 4. The Main Event Loop
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            // Handle Window Close
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
+
+            // Handle Mouse Click (Link Navigation)
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2f mousePos(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y));
+                
+                for (const auto& link : renderer.getLinks()) {
+                    if (link.bounds.contains(mousePos)) {
+                        history.push(currentPage); // Store current page in history
+                        currentPage = "assets/sample_pages/" + link.target;
+                        domTree = loadPage(currentPage);
+                        break; 
+                    }
+                }
+            }
+
+            // Handle Keyboard (Backspace for Back Navigation)
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::BackSpace) {
+                if (!history.empty()) {
+                    currentPage = history.top();
+                    history.pop();
+                    domTree = loadPage(currentPage);
+                }
+            }
         }
 
-        // --- Rendering Phase ---
-        window.clear(sf::Color::White); // Standard browser background
+        // 5. The Rendering Phase
+        window.clear(sf::Color::White); // Clean white background
 
-        // Draw the DOM tree to the window
+        // The renderer walks the DOM and draws it to the screen
         renderer.render(window, domTree);
 
         window.display();
